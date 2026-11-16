@@ -443,7 +443,7 @@ public class Vala.CCodeMethodCallModule : CCodeAssignmentModule {
 									closure_new.add_argument (delegate_target);
 									closure_new.add_argument (new CCodeCastExpression (delegate_target_destroy_notify, "GClosureNotify"));
 									//TODO Use get_non_null (arg.target_value)
-									if (arg.is_non_null ()) {
+									if (arg.is_non_null () || arg.symbol_reference is Method) {
 										cexpr = closure_new;
 									} else {
 										cexpr = new CCodeConditionalExpression (new CCodeBinaryExpression (CCodeBinaryOperator.EQUALITY, cexpr, new CCodeConstant ("NULL")), new CCodeConstant ("NULL"), closure_new);

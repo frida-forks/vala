@@ -6042,7 +6042,9 @@ public abstract class Vala.CCodeBaseModule : CodeGenerator {
 		if (array_type.element_type is StructValueType) {
 			function.add_parameter (new CCodeParameter ("needle", "const %s *".printf (get_ccode_name (array_type.element_type))));
 		} else {
-			function.add_parameter (new CCodeParameter ("needle", "const %s".printf (get_ccode_name (array_type.element_type))));
+			var element_ctype = get_ccode_name (array_type.element_type);
+			var needle_ctype = element_ctype.has_prefix ("const ") ? element_ctype : "const %s".printf (element_ctype);
+			function.add_parameter (new CCodeParameter ("needle", needle_ctype));
 		}
 
 		push_function (function);

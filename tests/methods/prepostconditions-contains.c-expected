@@ -32,7 +32,7 @@
 VALA_EXTERN void foo (const gchar* s);
 static gboolean _vala_string_array_contains (const gchar* * stack,
                                       gssize stack_length,
-                                      const const gchar* needle);
+                                      const gchar* needle);
 VALA_EXTERN gchar* bar (void);
 static void _vala_main (void);
 
@@ -41,7 +41,7 @@ const gchar* array[3] = {"foo", "bar", "manam"};
 static gboolean
 _vala_string_array_contains (const gchar* * stack,
                              gssize stack_length,
-                             const const gchar* needle)
+                             const gchar* needle)
 {
 	gssize i;
 	for (i = 0; i < stack_length; i++) {
